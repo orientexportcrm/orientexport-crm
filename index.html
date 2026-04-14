@@ -261,7 +261,7 @@ tr:hover .td-actions { opacity:1; }
       <div class="form-group"><label class="form-label">EMAIL</label><input class="form-input" id="f-cis-Email" type="email" placeholder="email@azienda.com"></div>
       <div class="form-group"><label class="form-label">TELEFONO</label><input class="form-input" id="f-cis-Telefono" placeholder="+7 ..."></div>
       <div class="form-group"><label class="form-label">priorità</label>
-        <select class="form-select" id="f-cis-Priorita"><option>1-Bassa</option><option>2-Media</option><option>3-Alta</option></select>
+        <select class="form-select" id="f-cis-Priorità"><option>1-Bassa</option><option>2-Media</option><option>3-Alta</option></select>
       </div>
       <div class="form-group"><label class="form-label">ULTIMO CONTATTO</label><input class="form-input" id="f-cis-Ultimo contatto" type="date"></div>
       <div class="form-group full"><label class="form-label">NOTE</label><textarea class="form-textarea" id="f-cis-Note" placeholder="Note interne..."></textarea></div>
@@ -287,8 +287,8 @@ tr:hover .td-actions { opacity:1; }
       <div class="form-group"><label class="form-label">STATO</label>
         <select class="form-select" id="f-it-Stato"><option>Prospect</option><option>Contattato</option><option>Proposta inviata</option><option>Trattativa</option><option>Mandato firmato</option><option>Attivo</option><option>Freddo</option><option>Concluso</option></select>
       </div>
-      <div class="form-group"><label class="form-label">PRIORITA</label>
-        <select class="form-select" id="f-it-Priorita"><option>1-Bassa</option><option>2-Media</option><option>3-Alta</option></select>
+      <div class="form-group"><label class="form-label">Priorità</label>
+        <select class="form-select" id="f-it-Priorità"><option>1-Bassa</option><option>2-Media</option><option>3-Alta</option></select>
       </div>
       <div class="form-group"><label class="form-label">EMAIL</label><input class="form-input" id="f-it-Email" type="email" placeholder="email@azienda.it"></div>
       <div class="form-group"><label class="form-label">TELEFONO</label><input class="form-input" id="f-it-Telefono" placeholder="+39 ..."></div>
@@ -478,7 +478,7 @@ function renderStats(type) {
   const total = leads.length;
   const active = leads.filter(l=>l.Stato==='Attivo'||l.Stato==='Mandato firmato').length;
   const tratt  = leads.filter(l=>l.Stato==='Trattativa'||l.Stato==='Proposta inviata').length;
-  const hot    = leads.filter(l=>(l.Priorita||'').startsWith('3')).length;
+  const hot    = leads.filter(l=>(l.Priorità||'').startsWith('3')).length;
   const labels = type==='cis'
     ? [['BUYER TOTALI',total,''],['ATTIVI',active,'partnership avviate'],['IN TRATTATIVA',tratt,'da chiudere'],['PRIORITÀ ALTA',hot,'da seguire']]
     : [['CLIENTI TOTALI',total,''],['MANDATI ATTIVI',active,'in corso'],['IN TRATTATIVA',tratt,'proposta inviata'],['PRIORITÀ ALTA',hot,'da seguire']];
@@ -501,7 +501,7 @@ function renderTable(type) {
         <td style="font-size:12px;color:var(--muted)">${l.Canale||'—'}</td>
         <td style="font-size:12px;color:var(--muted)">${l.Prodotto||'—'}</td>
         <td>${statusBadge(l.Stato)}</td>
-        <td>${priorityDots(l.Priorita)}</td>
+        <td>${priorityDots(l.Priorità)}</td>
         <td style="font-size:12px;color:var(--muted)">${l['Ultimo contatto']||'—'}</td>
         <td><div class="td-actions">
           <button class="action-btn" onclick="event.stopPropagation();editLead('cis','${l.id}')">Modifica</button>
@@ -517,7 +517,7 @@ function renderTable(type) {
         <td style="font-size:12px;color:var(--muted)">${l.Settore||'—'}</td>
         <td style="font-size:12px;color:var(--muted)">${l['Mercati Target']||'—'}</td>
         <td>${statusBadge(l.Stato)}</td>
-        <td>${priorityDots(l.Priorita)}</td>
+        <td>${priorityDots(l.Priorità)}</td>
         <td style="font-size:12px;color:var(--muted)">${l['Ultimo contatto']||'—'}</td>
         <td><div class="td-actions">
           <button class="action-btn" onclick="event.stopPropagation();editLead('it','${l.id}')">Modifica</button>
@@ -534,8 +534,8 @@ function renderAll() {
 }
 
 // ── MODAL ────────────────────────────────────────────────────────
-const CIS_FIELDS = ['Nome','Azienda','Paese','Canale','Prodotto','Stato','Email','Telefono','Priorita','Ultimo contatto','Note'];
-const IT_FIELDS  = ['Nome','Azienda','Settore','Mercati Target','Stato','Priorita','Email','Telefono','Ultimo contatto','Note'];
+const CIS_FIELDS = ['Nome','Azienda','Paese','Canale','Prodotto','Stato','Email','Telefono','Priorità','Ultimo contatto','Note'];
+const IT_FIELDS  = ['Nome','Azienda','Settore','Mercati Target','Stato','Priorità','Email','Telefono','Ultimo contatto','Note'];
 
 function openModal(type, id) {
   editId[type] = id||null;
