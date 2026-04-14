@@ -571,8 +571,8 @@ function saveLead(type) {
     const el = document.getElementById('f-'+type+'-'+f);
     if (el && el.value.trim()) payload[f] = el.value.trim();
   });
-  closeModal(type);
-  saveToAirtable(type, payload, editId[type]);
+ saveToAirtable(type, payload, editId[type]);
+ closeModal(type);
 }
 
 function editLead(type, id) { openModal(type, id); }
