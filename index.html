@@ -534,29 +534,35 @@ function renderAll() {
 }
 
 // ── MODAL ────────────────────────────────────────────────────────
-const CIS_FIELDS = ['Nome','Azienda','Paese','Canale','Prodotto','Stato','Email','Telefono','','Ultimo contatto','Note'];
-const IT_FIELDS  = ['Nome','Azienda','Settore','Mercati Target','Stato','','Email','Telefono','Ultimo contatto','Note'];
-
+const CIS_FIELDS = ['Nome','Azienda','Paese','Canale','Prodotto','Stato','Email','Telefono','Priorità','Ultimo contatto','Note'];
+const IT_FIELDS = ['Nome','Azienda','Settore','Mercati Target','Stato','Priorità','Email','Telefono','Ultimo contatto','Note'];
 function openModal(type, id) {
-  editId[type] = id||null;
-  const fields = type==='cis' ? CIS_FIELDS : IT_FIELDS;
-  document.getElementById('modal-'+type+'-title').textContent = id ? 'Modifica Lead' : (type==='cis'?'Nuovo Buyer CIS':'Nuovo Cliente Italia');
+ function openModal(type, id) {
+  editId[type] = id || null;
+  const fields = type === 'cis' ? CIS_FIELDS : IT_FIELDS;
+  document.getElementById('modal-' + type + '-title').textContent = id ? 'Modifica Lead' : (type === 'cis' ? 'Nuovo Buyer CIS' : 'Nuovo Cliente Italia');
+  
+  // Pulisci tutti i campi prima
+  fields.forEach(f => {
+    const el = document.getElementById('f-' + type + '-' + f);
+    if (el) el.value = '';
+  });
+  
+  // Se modifica, popola con i dati esistenti
   if (id) {
-    const lead = data[type].find(l=>l.id===id);
-    if (!lead) return;
-    fields.forEach(f => {
-      const el = document.getElementById('f-'+type+'-'+f);
-      if (el) el.value = lead[f]||'';
-    });
-  } else {
-    fields.forEach(f => {
-      const el = document.getElementById('f-'+type+'-'+f);
-      if (el) el.value = '';
-    });
+    const lead = data[type].find(l => l.id === id);
+    if (lead) {
+      fields.forEach(f => {
+        const el = document.getElementById('f-' + type + '-' + f);
+        if (el && lead[f] !== undefined && lead[f] !== null) {
+          el.value = lead[f];
+        }
+      });
+    }
   }
-  document.getElementById('modal-'+type).classList.add('open');
+  
+  document.getElementById('modal-' + type).classList.add('open');
 }
-
 function closeModal(type) {
   document.getElementById('modal-'+type).classList.remove('open');
   editId[type] = null;
