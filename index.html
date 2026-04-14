@@ -569,7 +569,11 @@ function saveLead(type) {
   const payload = {};
   fields.forEach(f => {
     const el = document.getElementById('f-'+type+'-'+f);
-    if (el && el.value.trim()) payload[f] = el.value.trim();
+    if (el && el.value.trim()) if (f === 'Ultimo contatto' && el.value) {
+  payload[f] = el.value;
+} else if (el && el.value.trim()) {
+  payload[f] = el.value.trim();
+}
   });
 saveToAirtable(type, payload, editId[type]);
  closeModal(type);
