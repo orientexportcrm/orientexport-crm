@@ -14,13 +14,9 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
 
-/* LOGIN */
 .login-overlay { position:fixed; inset:0; background:#0D0D6B; z-index:999; display:flex; align-items:center; justify-content:center; }
 .login-overlay.hidden { display:none; }
 .login-box { background:#fff; border-radius:16px; padding:40px 44px; width:400px; text-align:center; }
-.login-logos { display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:24px; }
-.login-logos img { width:52px; height:52px; object-fit:contain; }
-.login-divider { width:1px; height:44px; background:#E2E2E8; }
 .login-title { font-size:20px; font-weight:600; color:#0D0D6B; margin-bottom:4px; letter-spacing:1px; }
 .login-sub { font-size:12px; color:#7a7a90; margin-bottom:28px; }
 .login-form { display:flex; flex-direction:column; gap:12px; text-align:left; }
@@ -32,7 +28,6 @@ body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text)
 .login-error { color:#CC0000; font-size:12px; margin-top:6px; min-height:18px; }
 .login-footer { font-size:11px; color:#b0b0c0; margin-top:20px; }
 
-/* HEADER */
 .header { background:var(--navy); color:#fff; padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:56px; position:sticky; top:0; z-index:100; }
 .header-brand { display:flex; align-items:center; gap:12px; }
 .header-brand .dot { width:8px; height:8px; background:var(--red); border-radius:50%; }
@@ -46,26 +41,22 @@ body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text)
 .btn-outline:hover { background:rgba(255,255,255,0.1); }
 .logout-btn { padding:5px 12px; background:transparent; border:1px solid rgba(255,255,255,0.25); color:#fff; border-radius:6px; font-size:11px; cursor:pointer; font-family:inherit; }
 
-/* TABS */
 .tabs { background:var(--white); border-bottom:1px solid var(--border); padding:0 32px; display:flex; }
 .tab { padding:14px 24px; font-size:13px; font-weight:500; cursor:pointer; border-bottom:2px solid transparent; color:var(--muted); display:flex; align-items:center; gap:8px; }
 .tab.active { color:var(--navy); border-bottom-color:var(--navy); }
 .tab .count { background:var(--bg); border-radius:99px; padding:2px 8px; font-size:11px; font-family:'DM Mono',monospace; }
 .tab.active .count { background:var(--navy); color:#fff; }
 
-/* MAIN */
 .main { padding:24px 32px; max-width:1400px; margin:0 auto; }
 .section { display:none; }
 .section.active { display:block; }
 
-/* STATS */
 .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px; }
 .stat-card { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:16px 20px; }
 .stat-label { font-size:11px; color:var(--muted); font-weight:500; letter-spacing:0.5px; margin-bottom:6px; }
 .stat-value { font-size:26px; font-weight:600; color:var(--navy); font-family:'DM Mono',monospace; }
 .stat-sub { font-size:11px; color:var(--muted); margin-top:2px; }
 
-/* TOOLBAR */
 .toolbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; gap:12px; }
 .toolbar-left { display:flex; gap:8px; flex:1; }
 .search-input { flex:1; max-width:280px; padding:8px 14px; border:1px solid var(--border); border-radius:8px; font-size:13px; font-family:inherit; outline:none; background:var(--white); }
@@ -74,7 +65,6 @@ body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text)
 .btn-add { background:var(--navy); color:#fff; border:none; padding:8px 18px; border-radius:8px; font-size:13px; font-weight:500; cursor:pointer; font-family:inherit; display:flex; align-items:center; gap:6px; }
 .btn-add:hover { background:var(--navy-light); }
 
-/* TABLE */
 .table-wrap { background:var(--white); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
 table { width:100%; border-collapse:collapse; }
 thead th { background:#F8F8FC; padding:10px 16px; text-align:left; font-size:11px; font-weight:600; color:var(--muted); letter-spacing:0.5px; border-bottom:1px solid var(--border); white-space:nowrap; }
@@ -85,7 +75,6 @@ tbody td { padding:12px 16px; font-size:13px; vertical-align:middle; }
 .td-name { font-weight:500; }
 .td-company { color:var(--muted); font-size:12px; }
 
-/* BADGES */
 .badge { display:inline-flex; align-items:center; padding:3px 10px; border-radius:99px; font-size:11px; font-weight:500; white-space:nowrap; }
 .badge-prospect { background:#EEF2FF; color:#3730a3; }
 .badge-contattato { background:#FEF9C3; color:#854d0e; }
@@ -100,19 +89,16 @@ tbody td { padding:12px 16px; font-size:13px; vertical-align:middle; }
 .badge-kz { background:#FEF3C7; color:#92400e; }
 .badge-uz { background:#D1FAE5; color:#065f46; }
 
-/* PRIORITY */
 .priority { display:inline-flex; gap:3px; }
 .priority-dot { width:6px; height:6px; border-radius:50%; background:var(--border); }
 .priority-dot.filled { background:var(--red); }
 
-/* ACTIONS */
 .td-actions { display:flex; gap:6px; opacity:0; }
 tr:hover .td-actions { opacity:1; }
 .action-btn { padding:4px 10px; border-radius:6px; font-size:11px; font-weight:500; cursor:pointer; border:1px solid var(--border); background:var(--white); font-family:inherit; }
 .action-btn.del { border-color:#fecaca; color:#dc2626; }
 .action-btn.del:hover { background:#fef2f2; }
 
-/* MODAL */
 .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:200; align-items:center; justify-content:center; }
 .modal-overlay.open { display:flex; }
 .modal { background:var(--white); border-radius:14px; padding:28px; width:520px; max-height:90vh; overflow-y:auto; }
@@ -128,18 +114,15 @@ tr:hover .td-actions { opacity:1; }
 .btn-cancel { padding:9px 18px; border:1px solid var(--border); border-radius:8px; font-size:13px; font-weight:500; cursor:pointer; background:var(--white); font-family:inherit; }
 .btn-save { padding:9px 18px; background:var(--navy); color:#fff; border:none; border-radius:8px; font-size:13px; font-weight:500; cursor:pointer; font-family:inherit; }
 
-/* LOADING */
 .loading { text-align:center; padding:60px 20px; color:var(--muted); }
 .spinner { width:32px; height:32px; border:3px solid var(--border); border-top-color:var(--navy); border-radius:50%; animation:spin 0.8s linear infinite; margin:0 auto 12px; }
 @keyframes spin { to { transform:rotate(360deg); } }
 .empty { text-align:center; padding:60px 20px; color:var(--muted); font-size:14px; }
 
-/* NOTIF */
 .notif { position:fixed; bottom:24px; right:24px; background:var(--navy); color:#fff; padding:12px 20px; border-radius:10px; font-size:13px; font-weight:500; z-index:300; transform:translateY(80px); opacity:0; transition:all 0.3s; }
 .notif.show { transform:translateY(0); opacity:1; }
 .notif.error { background:var(--red); }
 
-/* SYNC STATUS */
 .sync-badge { font-size:11px; color:rgba(255,255,255,0.6); display:flex; align-items:center; gap:5px; }
 .sync-dot { width:6px; height:6px; border-radius:50%; background:#4ade80; }
 .sync-dot.syncing { background:#fbbf24; animation:pulse 1s infinite; }
@@ -148,14 +131,8 @@ tr:hover .td-actions { opacity:1; }
 </head>
 <body>
 
-<!-- LOGIN -->
 <div class="login-overlay" id="loginOverlay">
   <div class="login-box">
-    <div class="login-logos">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Camponotus_flavomarginatus_ant.jpg/320px-Camponotus_flavomarginatus_ant.jpg" alt="MS Consulting" onerror="this.style.display='none'">
-      <div class="login-divider"></div>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Camponotus_flavomarginatus_ant.jpg/320px-Camponotus_flavomarginatus_ant.jpg" alt="OrientExport" onerror="this.style.display='none'">
-    </div>
     <div class="login-title">ORIENTEXPORT CRM</div>
     <div class="login-sub">MS Consulting Srl · Accesso riservato</div>
     <div class="login-form">
@@ -174,7 +151,6 @@ tr:hover .td-actions { opacity:1; }
   </div>
 </div>
 
-<!-- HEADER -->
 <div class="header">
   <div class="header-brand">
     <div class="dot"></div>
@@ -190,19 +166,12 @@ tr:hover .td-actions { opacity:1; }
   </div>
 </div>
 
-<!-- TABS -->
 <div class="tabs">
-  <div class="tab active" onclick="switchSection('cis',this)">
-    Buyer CIS <span class="count" id="count-cis">0</span>
-  </div>
-  <div class="tab" onclick="switchSection('it',this)">
-    Clienti Italia <span class="count" id="count-it">0</span>
-  </div>
+  <div class="tab active" onclick="switchSection('cis',this)">Buyer CIS <span class="count" id="count-cis">0</span></div>
+  <div class="tab" onclick="switchSection('it',this)">Clienti Italia <span class="count" id="count-it">0</span></div>
 </div>
 
 <div class="main">
-
-  <!-- CIS -->
   <div class="section active" id="section-cis">
     <div class="stats" id="stats-cis"></div>
     <div class="toolbar">
@@ -210,13 +179,11 @@ tr:hover .td-actions { opacity:1; }
         <input class="search-input" placeholder="Cerca..." oninput="renderTable('cis')" id="search-cis">
         <select class="filter-select" onchange="renderTable('cis')" id="filter-status-cis">
           <option value="">Tutti gli stati</option>
-          <option>Prospect</option><option>Contattato</option>
-          <option>Trattativa</option><option>Attivo</option><option>Freddo</option>
+          <option>Prospect</option><option>Contattato</option><option>Trattativa</option><option>Attivo</option><option>Freddo</option>
         </select>
         <select class="filter-select" onchange="renderTable('cis')" id="filter-country-cis">
           <option value="">Tutti i paesi</option>
-          <option>Russia</option><option>Bielorussia</option>
-          <option>Kazakhstan</option><option>Uzbekistan</option>
+          <option>Russia</option><option>Bielorussia</option><option>Kazakhstan</option><option>Uzbekistan</option>
         </select>
       </div>
       <button class="btn-add" onclick="openModal('cis')">+ Aggiungi Buyer</button>
@@ -224,7 +191,6 @@ tr:hover .td-actions { opacity:1; }
     <div id="view-cis"><div class="loading"><div class="spinner"></div>Caricamento da Airtable...</div></div>
   </div>
 
-  <!-- ITALIA -->
   <div class="section" id="section-it">
     <div class="stats" id="stats-it"></div>
     <div class="toolbar">
@@ -233,8 +199,7 @@ tr:hover .td-actions { opacity:1; }
         <select class="filter-select" onchange="renderTable('it')" id="filter-status-it">
           <option value="">Tutti gli stati</option>
           <option>Prospect</option><option>Contattato</option><option>Proposta inviata</option>
-          <option>Trattativa</option><option>Mandato firmato</option>
-          <option>Attivo</option><option>Freddo</option><option>Concluso</option>
+          <option>Trattativa</option><option>Mandato firmato</option><option>Attivo</option><option>Freddo</option><option>Concluso</option>
         </select>
       </div>
       <button class="btn-add" onclick="openModal('it')">+ Aggiungi Cliente</button>
@@ -248,17 +213,17 @@ tr:hover .td-actions { opacity:1; }
   <div class="modal">
     <div class="modal-title" id="modal-cis-title">Nuovo Buyer CIS</div>
     <div class="form-grid">
-      <div class="form-group"><label class="form-label">NOME *</label><input class="form-input" id="f-cis-Nome" placeholder="Nome e cognome"></div>
-      <div class="form-group"><label class="form-label">AZIENDA *</label><input class="form-input" id="f-cis-Azienda" placeholder="Nome azienda"></div>
+      <div class="form-group"><label class="form-label">NOME *</label><input class="form-input" id="f-cis-Name" placeholder="Nome e cognome"></div>
+      <div class="form-group"><label class="form-label">AZIENDA</label><input class="form-input" id="f-cis-Azienda" placeholder="Nome azienda"></div>
       <div class="form-group"><label class="form-label">PAESE</label>
         <select class="form-select" id="f-cis-Paese"><option value="">Seleziona</option><option>Russia</option><option>Bielorussia</option><option>Kazakhstan</option><option>Uzbekistan</option></select>
       </div>
-      <div class="form-group"><label class="form-label">SETTORE</label><input class="form-input" id="f-cis-Settore" placeholder="Es. Vino & Spirits"></div>
+      <div class="form-group"><label class="form-label">SETTORE</label><input class="form-input" id="f-cis-Settore" placeholder="Es. Importatore vino"></div>
       <div class="form-group"><label class="form-label">PRODOTTO</label><input class="form-input" id="f-cis-Prodotto" placeholder="Es. Vino & Spirits"></div>
       <div class="form-group"><label class="form-label">STATO</label>
         <select class="form-select" id="f-cis-Stato"><option value="">Seleziona</option><option>Prospect</option><option>Contattato</option><option>Trattativa</option><option>Attivo</option><option>Freddo</option></select>
       </div>
-      <div class="form-group"><label class="form-label">EMAIL</label><input class="form-input" id="f-cis-Email" type="email" placeholder="email@azienda.com"></div>
+      <div class="form-group"><label class="form-label">EMAIL</label><input class="form-input" id="f-cis-Email" type="email"></div>
       <div class="form-group"><label class="form-label">TELEFONO</label><input class="form-input" id="f-cis-Telefono" placeholder="+7 ..."></div>
       <div class="form-group"><label class="form-label">PRIORITÀ</label>
         <select class="form-select" id="f-cis-Priorità"><option value="">Seleziona</option><option>1-Bassa</option><option>2-Media</option><option>3-Alta</option></select>
@@ -278,7 +243,7 @@ tr:hover .td-actions { opacity:1; }
     <div class="modal-title" id="modal-it-title">Nuovo Cliente Italia</div>
     <div class="form-grid">
       <div class="form-group"><label class="form-label">NOME *</label><input class="form-input" id="f-it-Nome" placeholder="Nome e cognome"></div>
-      <div class="form-group"><label class="form-label">AZIENDA *</label><input class="form-input" id="f-it-Azienda" placeholder="Nome azienda"></div>
+      <div class="form-group"><label class="form-label">AZIENDA</label><input class="form-input" id="f-it-Azienda" placeholder="Nome azienda"></div>
       <div class="form-group"><label class="form-label">SETTORE</label><input class="form-input" id="f-it-Settore" placeholder="Es. Vino & Spirits"></div>
       <div class="form-group"><label class="form-label">MERCATI TARGET</label>
         <select class="form-select" id="f-it-Mercati Target"><option value="">Seleziona</option><option>Russia</option><option>Bielorussia</option><option>Kazakhstan</option><option>Uzbekistan</option><option>Tutti i CIS</option></select>
@@ -289,7 +254,7 @@ tr:hover .td-actions { opacity:1; }
       <div class="form-group"><label class="form-label">PRIORITÀ</label>
         <select class="form-select" id="f-it-Priorità"><option value="">Seleziona</option><option>1-Bassa</option><option>2-Media</option><option>3-Alta</option></select>
       </div>
-      <div class="form-group"><label class="form-label">EMAIL</label><input class="form-input" id="f-it-Email" type="email" placeholder="email@azienda.it"></div>
+      <div class="form-group"><label class="form-label">EMAIL</label><input class="form-input" id="f-it-Email" type="email"></div>
       <div class="form-group"><label class="form-label">TELEFONO</label><input class="form-input" id="f-it-Telefono" placeholder="+39 ..."></div>
       <div class="form-group"><label class="form-label">ULTIMO CONTATTO</label><input class="form-input" id="f-it-Ultimo contatto" type="date"></div>
     </div>
@@ -303,30 +268,29 @@ tr:hover .td-actions { opacity:1; }
 <div class="notif" id="notif"></div>
 
 <script>
-const AT_BASE = "appEe6WMBuSvrz11L";
-const AT_CIS  = "tblZIEm1DAOybc6E0";
-const AT_IT   = "tblQT74u6uSeddUGr";
-const AT_URL  = "/api/airtable";
+var AT_BASE = "appEe6WMBuSvrz11L";
+var AT_CIS  = "tblZIEm1DAOybc6E0";
+var AT_IT   = "tblQT74u6uSeddUGr";
+var AT_URL  = "/api/airtable";
 
-const USERS = {
+var USERS = {
   'direzione@orientexport.it': { pass: 'Oriente77@', name: 'Marco Silvestri' },
-  'export@orientexport.it':    { pass: 'Oriente77@', name: 'Team Mosca' },
+  'export@orientexport.it':    { pass: 'Oriente77@', name: 'Team Mosca' }
 };
 
-const CIS_FIELDS = ['Name','Azienda','Paese','Settore','Prodotto','Stato','Email','Telefono','Priorità','Ultimo contatto'];
-const IT_FIELDS  = ['Nome','Azienda','Settore','Mercati Target','Stato','Priorità','Email','Telefono','Ultimo contatto'];
+var CIS_FIELDS = ['Name','Azienda','Paese','Settore','Prodotto','Stato','Email','Telefono','Priorità','Ultimo contatto'];
+var IT_FIELDS  = ['Nome','Azienda','Settore','Mercati Target','Stato','Priorità','Email','Telefono','Ultimo contatto'];
 
-let data = { cis: [], it: [] };
-let editId = { cis: null, it: null };
-let currentUser = null;
-let currentSection = 'cis';
+var data = { cis: [], it: [] };
+var editId = { cis: null, it: null };
+var currentUser = null;
+var currentSection = 'cis';
 
-// AUTH
 function doLogin() {
-  const u = document.getElementById('loginUser').value.trim().toLowerCase();
-  const p = document.getElementById('loginPass').value;
-  const err = document.getElementById('loginError');
-  const user = USERS[u];
+  var u = document.getElementById('loginUser').value.trim().toLowerCase();
+  var p = document.getElementById('loginPass').value;
+  var err = document.getElementById('loginError');
+  var user = USERS[u];
   if (!user || user.pass !== p) { err.textContent = 'Credenziali non valide.'; return; }
   err.textContent = '';
   currentUser = { email: u, name: user.name };
@@ -346,7 +310,7 @@ function doLogout() {
 
 function checkSession() {
   try {
-    const s = sessionStorage.getItem('oe_user');
+    var s = sessionStorage.getItem('oe_user');
     if (s) {
       currentUser = JSON.parse(s);
       document.getElementById('loginOverlay').classList.add('hidden');
@@ -356,20 +320,17 @@ function checkSession() {
   } catch(e) {}
 }
 
-document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
-document.getElementById('loginUser').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+document.getElementById('loginPass').addEventListener('keydown', function(e) { if(e.key==='Enter') doLogin(); });
+document.getElementById('loginUser').addEventListener('keydown', function(e) { if(e.key==='Enter') doLogin(); });
 
-// AIRTABLE API
 function tableId(type) { return type==='cis' ? AT_CIS : AT_IT; }
 
-async function atFetch(path, method='GET', body=null) {
-  const opts = { method, headers: { 'Content-Type': 'application/json' } };
+async function atFetch(path, method, body) {
+  method = method || 'GET';
+  var opts = { method: method, headers: { 'Content-Type': 'application/json' } };
   if (body) opts.body = JSON.stringify(body);
-  const r = await fetch(AT_URL + path, opts);
-  if (!r.ok) {
-    const txt = await r.text();
-    throw new Error(txt);
-  }
+  var r = await fetch(AT_URL + path, opts);
+  if (!r.ok) { var txt = await r.text(); throw new Error(txt); }
   return r.json();
 }
 
@@ -387,39 +348,45 @@ async function loadAll() {
 }
 
 async function loadTable(type) {
-  const tid = tableId(type);
-  let records = [], offset = null;
+  var tid = tableId(type);
+  var records = [];
+  var offset = null;
   do {
-    const url = '/' + AT_BASE + '/' + tid + '?pageSize=100' + (offset ? '&offset=' + offset : '');
-    const res = await atFetch(url);
+    var url = '/' + AT_BASE + '/' + tid + '?pageSize=100' + (offset ? '&offset=' + offset : '');
+    var res = await atFetch(url);
     records = records.concat(res.records || []);
     offset = res.offset || null;
   } while(offset);
-  data[type] = records.map(r => ({ id: r.id, ...r.fields }));
+  data[type] = records.map(function(r) {
+    var obj = { id: r.id };
+    var f = r.fields || {};
+    Object.keys(f).forEach(function(k) { obj[k] = f[k]; });
+    return obj;
+  });
 }
 
 async function saveToAirtable(type, fields, recordId) {
-  const tid = tableId(type);
+  var tid = tableId(type);
   setSyncing(true);
   try {
     if (recordId) {
-      await atFetch('/' + AT_BASE + '/' + tid + '/' + recordId, 'PATCH', { fields });
+      await atFetch('/' + AT_BASE + '/' + tid + '/' + recordId, 'PATCH', { fields: fields });
     } else {
-      await atFetch('/' + AT_BASE + '/' + tid, 'POST', { records: [{ fields }] });
+      await atFetch('/' + AT_BASE + '/' + tid, 'POST', { records: [{ fields: fields }] });
     }
     await loadTable(type);
     setSyncing(false);
     renderAll();
-    notify(recordId ? 'Lead aggiornato' : 'Lead salvato su Airtable');
+    notify(recordId ? 'Lead aggiornato' : 'Lead salvato');
   } catch(e) {
     setSyncing(false);
-    notify('Errore salvataggio: ' + e.message, true);
+    notify('Errore: ' + e.message, true);
     console.error(e);
   }
 }
 
 async function deleteFromAirtable(type, recordId) {
-  const tid = tableId(type);
+  var tid = tableId(type);
   setSyncing(true);
   try {
     await atFetch('/' + AT_BASE + '/' + tid + '/' + recordId, 'DELETE');
@@ -434,16 +401,13 @@ async function deleteFromAirtable(type, recordId) {
 }
 
 function setSyncing(on) {
-  const dot = document.getElementById('syncDot');
-  const lbl = document.getElementById('syncLabel');
-  dot.className = 'sync-dot' + (on ? ' syncing' : '');
-  lbl.textContent = on ? 'Sincronizzazione...' : 'Airtable ✓';
+  document.getElementById('syncDot').className = 'sync-dot' + (on ? ' syncing' : '');
+  document.getElementById('syncLabel').textContent = on ? 'Sincronizzazione...' : 'Airtable ✓';
 }
 
-// RENDER
 function switchSection(type, el) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
   document.getElementById('section-' + type).classList.add('active');
   el.classList.add('active');
   currentSection = type;
@@ -451,147 +415,134 @@ function switchSection(type, el) {
 }
 
 function statusBadge(s) {
-  const map = {'Prospect':'badge-prospect','Contattato':'badge-contattato','Proposta inviata':'badge-proposta','Trattativa':'badge-trattativa','Mandato firmato':'badge-mandato','Attivo':'badge-attivo','Freddo':'badge-freddo','Concluso':'badge-concluso'};
-  return s ? '<span class="badge ' + (map[s] || '') + '">' + s + '</span>' : '';
+  var map = {'Prospect':'badge-prospect','Contattato':'badge-contattato','Proposta inviata':'badge-proposta','Trattativa':'badge-trattativa','Mandato firmato':'badge-mandato','Attivo':'badge-attivo','Freddo':'badge-freddo','Concluso':'badge-concluso'};
+  return s ? '<span class="badge ' + (map[s]||'') + '">' + s + '</span>' : '';
 }
 
 function countryBadge(c) {
-  const map = {'Russia':'badge-ru','Bielorussia':'badge-by','Kazakhstan':'badge-kz','Uzbekistan':'badge-uz'};
-  return c ? '<span class="badge ' + (map[c] || '') + '">' + c + '</span>' : '';
+  var map = {'Russia':'badge-ru','Bielorussia':'badge-by','Kazakhstan':'badge-kz','Uzbekistan':'badge-uz'};
+  return c ? '<span class="badge ' + (map[c]||'') + '">' + c + '</span>' : '';
 }
 
 function priorityDots(p) {
-  const n = p ? parseInt(p.charAt(0)) || 1 : 1;
-  let dots = '';
-  for (let i = 1; i <= 3; i++) {
-    dots += '<span class="priority-dot' + (i <= n ? ' filled' : '') + '"></span>';
-  }
-  return '<span class="priority">' + dots + '</span>';
+  var n = p ? (parseInt(p.charAt(0)) || 1) : 1;
+  var d = '';
+  for (var i=1; i<=3; i++) d += '<span class="priority-dot' + (i<=n?' filled':'') + '"></span>';
+  return '<span class="priority">' + d + '</span>';
 }
 
 function getFiltered(type) {
-  const search = (document.getElementById('search-' + type) || {value:''}).value.toLowerCase();
-  const status = (document.getElementById('filter-status-' + type) || {value:''}).value;
-  const country = type === 'cis' ? (document.getElementById('filter-country-cis') || {value:''}).value : '';
+  var search = (document.getElementById('search-'+type)||{value:''}).value.toLowerCase();
+  var status = (document.getElementById('filter-status-'+type)||{value:''}).value;
+  var country = type==='cis' ? (document.getElementById('filter-country-cis')||{value:''}).value : '';
   return data[type].filter(function(l) {
-    const txt = ((l.Nome || '') + (l.Azienda || '') + (l.Paese || '') + (l.Settore || '')).toLowerCase();
-    if (search && txt.indexOf(search) === -1) return false;
-    if (status && l.Stato !== status) return false;
-    if (country && l.Paese !== country) return false;
+    var nf = type==='cis' ? 'Name' : 'Nome';
+    var txt = ((l[nf]||'')+(l.Azienda||'')+(l.Paese||'')+(l.Settore||'')).toLowerCase();
+    if (search && txt.indexOf(search)===-1) return false;
+    if (status && l.Stato!==status) return false;
+    if (country && l.Paese!==country) return false;
     return true;
   });
 }
 
 function renderStats(type) {
-  const leads = data[type];
-  const total = leads.length;
-  const active = leads.filter(function(l) { return l.Stato === 'Attivo' || l.Stato === 'Mandato firmato'; }).length;
-  const tratt  = leads.filter(function(l) { return l.Stato === 'Trattativa' || l.Stato === 'Proposta inviata'; }).length;
-  const hot    = leads.filter(function(l) { return (l['Priorità'] || '').charAt(0) === '3'; }).length;
-  const labels = type === 'cis'
+  var leads = data[type];
+  var total = leads.length;
+  var active = leads.filter(function(l){return l.Stato==='Attivo'||l.Stato==='Mandato firmato';}).length;
+  var tratt  = leads.filter(function(l){return l.Stato==='Trattativa'||l.Stato==='Proposta inviata';}).length;
+  var hot    = leads.filter(function(l){return (l['Priorità']||'').charAt(0)==='3';}).length;
+  var labels = type==='cis'
     ? [['BUYER TOTALI',total,''],['ATTIVI',active,'partnership avviate'],['IN TRATTATIVA',tratt,'da chiudere'],['PRIORITÀ ALTA',hot,'da seguire']]
     : [['CLIENTI TOTALI',total,''],['MANDATI ATTIVI',active,'in corso'],['IN TRATTATIVA',tratt,'proposta inviata'],['PRIORITÀ ALTA',hot,'da seguire']];
-  document.getElementById('stats-' + type).innerHTML = labels.map(function(item) {
-    return '<div class="stat-card"><div class="stat-label">' + item[0] + '</div><div class="stat-value">' + item[1] + '</div>' + (item[2] ? '<div class="stat-sub">' + item[2] + '</div>' : '') + '</div>';
+  document.getElementById('stats-'+type).innerHTML = labels.map(function(x){
+    return '<div class="stat-card"><div class="stat-label">'+x[0]+'</div><div class="stat-value">'+x[1]+'</div>'+(x[2]?'<div class="stat-sub">'+x[2]+'</div>':'')+'</div>';
   }).join('');
 }
 
 function renderTable(type) {
   renderStats(type);
-  document.getElementById('count-' + type).textContent = data[type].length;
-  const leads = getFiltered(type);
-  const wrap = document.getElementById('view-' + type);
+  document.getElementById('count-'+type).textContent = data[type].length;
+  var leads = getFiltered(type);
+  var wrap = document.getElementById('view-'+type);
   if (!leads.length) { wrap.innerHTML = '<div class="empty">Nessun lead trovato</div>'; return; }
-
-  let rows = '';
-  leads.forEach(function(l) {
-    if (type === 'cis') {
-      rows += '<tr onclick="editLead(\'cis\',\'' + l.id + '\')">' +
-        '<td><div class="td-name">' + (l.Nome || '') + '</div><div class="td-company">' + (l.Azienda || '') + '</div></td>' +
-        '<td>' + countryBadge(l.Paese) + '</td>' +
-        '<td style="font-size:12px;color:var(--muted)">' + (l.Settore || '—') + '</td>' +
-        '<td style="font-size:12px;color:var(--muted)">' + (l.Prodotto || '—') + '</td>' +
-        '<td>' + statusBadge(l.Stato) + '</td>' +
-        '<td>' + priorityDots(l['Priorità']) + '</td>' +
-        '<td style="font-size:12px;color:var(--muted)">' + (l['Ultimo contatto'] || '—') + '</td>' +
+  var nf = type==='cis' ? 'Name' : 'Nome';
+  var rows = leads.map(function(l) {
+    var nm = l[nf]||'';
+    var az = l.Azienda||'';
+    var pr = priorityDots(l['Priorità']);
+    var st = statusBadge(l.Stato);
+    var uc = l['Ultimo contatto']||'—';
+    var id = l.id;
+    if (type==='cis') {
+      return '<tr onclick="editLead(\'cis\',\''+id+'\')">' +
+        '<td><div class="td-name">'+nm+'</div><div class="td-company">'+az+'</div></td>' +
+        '<td>'+countryBadge(l.Paese)+'</td>' +
+        '<td style="font-size:12px;color:var(--muted)">'+(l.Settore||'—')+'</td>' +
+        '<td style="font-size:12px;color:var(--muted)">'+(l.Prodotto||'—')+'</td>' +
+        '<td>'+st+'</td><td>'+pr+'</td>' +
+        '<td style="font-size:12px;color:var(--muted)">'+uc+'</td>' +
         '<td><div class="td-actions">' +
-        '<button class="action-btn" onclick="event.stopPropagation();editLead(\'cis\',\'' + l.id + '\')">Modifica</button>' +
-        '<button class="action-btn del" onclick="event.stopPropagation();deleteLead(\'cis\',\'' + l.id + '\')">Elimina</button>' +
+        '<button class="action-btn" onclick="event.stopPropagation();editLead(\'cis\',\''+id+'\')">Modifica</button>' +
+        '<button class="action-btn del" onclick="event.stopPropagation();deleteLead(\'cis\',\''+id+'\')">Elimina</button>' +
         '</div></td></tr>';
     } else {
-      rows += '<tr onclick="editLead(\'it\',\'' + l.id + '\')">' +
-        '<td><div class="td-name">' + (l.Nome || '') + '</div><div class="td-company">' + (l.Azienda || '') + '</div></td>' +
-        '<td style="font-size:12px;color:var(--muted)">' + (l.Settore || '—') + '</td>' +
-        '<td style="font-size:12px;color:var(--muted)">' + (l['Mercati Target'] || '—') + '</td>' +
-        '<td>' + statusBadge(l.Stato) + '</td>' +
-        '<td>' + priorityDots(l['Priorità']) + '</td>' +
-        '<td style="font-size:12px;color:var(--muted)">' + (l['Ultimo contatto'] || '—') + '</td>' +
+      return '<tr onclick="editLead(\'it\',\''+id+'\')">' +
+        '<td><div class="td-name">'+nm+'</div><div class="td-company">'+az+'</div></td>' +
+        '<td style="font-size:12px;color:var(--muted)">'+(l.Settore||'—')+'</td>' +
+        '<td style="font-size:12px;color:var(--muted)">'+(l['Mercati Target']||'—')+'</td>' +
+        '<td>'+st+'</td><td>'+pr+'</td>' +
+        '<td style="font-size:12px;color:var(--muted)">'+uc+'</td>' +
         '<td><div class="td-actions">' +
-        '<button class="action-btn" onclick="event.stopPropagation();editLead(\'it\',\'' + l.id + '\')">Modifica</button>' +
-        '<button class="action-btn del" onclick="event.stopPropagation();deleteLead(\'it\',\'' + l.id + '\')">Elimina</button>' +
+        '<button class="action-btn" onclick="event.stopPropagation();editLead(\'it\',\''+id+'\')">Modifica</button>' +
+        '<button class="action-btn del" onclick="event.stopPropagation();deleteLead(\'it\',\''+id+'\')">Elimina</button>' +
         '</div></td></tr>';
     }
-  });
-
-  const headers = type === 'cis'
+  }).join('');
+  var hd = type==='cis'
     ? '<thead><tr><th>NOME / AZIENDA</th><th>PAESE</th><th>SETTORE</th><th>PRODOTTO</th><th>STATO</th><th>PRIORITÀ</th><th>ULTIMO CONTATTO</th><th></th></tr></thead>'
     : '<thead><tr><th>NOME / AZIENDA</th><th>SETTORE</th><th>MERCATI TARGET</th><th>STATO</th><th>PRIORITÀ</th><th>ULTIMO CONTATTO</th><th></th></tr></thead>';
-
-  wrap.innerHTML = '<div class="table-wrap"><table>' + headers + '<tbody>' + rows + '</tbody></table></div>';
+  wrap.innerHTML = '<div class="table-wrap"><table>'+hd+'<tbody>'+rows+'</tbody></table></div>';
 }
 
-function renderAll() {
-  renderTable('cis');
-  renderTable('it');
-}
+function renderAll() { renderTable('cis'); renderTable('it'); }
 
-// MODAL
 function openModal(type, id) {
   editId[type] = id || null;
-  const fields = type === 'cis' ? CIS_FIELDS : IT_FIELDS;
-  document.getElementById('modal-' + type + '-title').textContent = id ? 'Modifica Lead' : (type === 'cis' ? 'Nuovo Buyer CIS' : 'Nuovo Cliente Italia');
-
-  // Pulisci tutti i campi
+  var fields = type==='cis' ? CIS_FIELDS : IT_FIELDS;
+  document.getElementById('modal-'+type+'-title').textContent = id ? 'Modifica Lead' : (type==='cis' ? 'Nuovo Buyer CIS' : 'Nuovo Cliente Italia');
   fields.forEach(function(f) {
-    const el = document.getElementById('f-' + type + '-' + f);
+    var el = document.getElementById('f-'+type+'-'+f);
     if (el) el.value = '';
   });
-
-  // Se modifica, popola con i dati esistenti
   if (id) {
-    const lead = data[type].find(function(l) { return l.id === id; });
+    var lead = null;
+    for (var i=0; i<data[type].length; i++) { if (data[type][i].id===id) { lead=data[type][i]; break; } }
     if (lead) {
       fields.forEach(function(f) {
-        const el = document.getElementById('f-' + type + '-' + f);
-        if (el && lead[f] !== undefined && lead[f] !== null) {
-          el.value = lead[f];
-        }
+        var el = document.getElementById('f-'+type+'-'+f);
+        if (el && lead[f]!==undefined && lead[f]!==null) el.value = lead[f];
       });
     }
   }
-
-  document.getElementById('modal-' + type).classList.add('open');
+  document.getElementById('modal-'+type).classList.add('open');
 }
 
 function closeModal(type) {
-  document.getElementById('modal-' + type).classList.remove('open');
+  document.getElementById('modal-'+type).classList.remove('open');
   editId[type] = null;
 }
 
 function saveLead(type) {
-  const fields = type === 'cis' ? CIS_FIELDS : IT_FIELDS;
-  const nome = document.getElementById('f-' + type + '-Nome').value.trim();
-  if (!nome) { notify('Il campo Nome è obbligatorio', true); return; }
-
-  const payload = {};
+  var fields = type==='cis' ? CIS_FIELDS : IT_FIELDS;
+  var nf = type==='cis' ? 'Name' : 'Nome';
+  var nameEl = document.getElementById('f-'+type+'-'+nf);
+  if (!nameEl || !nameEl.value.trim()) { notify('Il campo Nome è obbligatorio', true); return; }
+  var payload = {};
   fields.forEach(function(f) {
-    const el = document.getElementById('f-' + type + '-' + f);
-    if (el && el.value.trim()) {
-      payload[f] = el.value.trim();
-    }
+    var el = document.getElementById('f-'+type+'-'+f);
+    if (el && el.value.trim()) payload[f] = el.value.trim();
   });
-
-  const recId = editId[type];
+  var recId = editId[type];
   saveToAirtable(type, payload, recId);
   closeModal(type);
 }
@@ -603,32 +554,28 @@ function deleteLead(type, id) {
   deleteFromAirtable(type, id);
 }
 
-// EXPORT CSV
 function exportCSV() {
-  const leads = data[currentSection];
-  if (!leads.length) { notify('Nessun dato da esportare', true); return; }
-  const keys = Object.keys(leads[0]).filter(function(k) { return k !== 'id'; });
-  const rows = leads.map(function(l) {
-    return keys.map(function(k) { return '"' + (l[k] || '').toString().replace(/"/g, '""') + '"'; }).join(',');
-  });
-  const csv = [keys.join(',')].concat(rows).join('\n');
-  const a = document.createElement('a');
-  a.href = 'data:text/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
-  a.download = 'OrientExport_CRM_' + currentSection.toUpperCase() + '_' + new Date().toISOString().split('T')[0] + '.csv';
+  var leads = data[currentSection];
+  if (!leads.length) { notify('Nessun dato', true); return; }
+  var keys = Object.keys(leads[0]).filter(function(k){return k!=='id';});
+  var rows = leads.map(function(l){return keys.map(function(k){return '"'+(l[k]||'').toString().replace(/"/g,'""')+'"';}).join(',');});
+  var csv = [keys.join(',')].concat(rows).join('\n');
+  var a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
+  a.download = 'OrientExport_CRM_'+currentSection.toUpperCase()+'_'+new Date().toISOString().split('T')[0]+'.csv';
   a.click();
   notify('CSV esportato');
 }
 
-// UTILS
 function notify(msg, isError) {
-  const n = document.getElementById('notif');
+  var n = document.getElementById('notif');
   n.textContent = msg;
-  n.className = 'notif show' + (isError ? ' error' : '');
-  setTimeout(function() { n.className = 'notif'; }, 3000);
+  n.className = 'notif show'+(isError?' error':'');
+  setTimeout(function(){n.className='notif';},3000);
 }
 
-document.querySelectorAll('.modal-overlay').forEach(function(m) {
-  m.addEventListener('click', function(e) { if (e.target === m) m.classList.remove('open'); });
+document.querySelectorAll('.modal-overlay').forEach(function(m){
+  m.addEventListener('click',function(e){if(e.target===m)m.classList.remove('open');});
 });
 
 checkSession();
