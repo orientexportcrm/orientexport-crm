@@ -3,7 +3,7 @@ const https = require('https');
 const path = require('path');
 const app = express();
 
-const AT_TOKEN = "patYcWvna1Yp5gwuE.19d8361457fccf8d48301d36d766851ffa1a15f14cc0cd27225997b0fd0f0d36";
+const AT_TOKEN = process.env.AIRTABLE_TOKEN;
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
