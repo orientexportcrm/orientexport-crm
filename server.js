@@ -7,14 +7,16 @@ const AT_TOKEN = "patYcWvna1Yp5gwuE.19d8361457fccf8d48301d36d766851ffa1a15f14cc0
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve static files from root directory
+app.use(express.static(__dirname));
 
 // Proxy endpoint for Airtable
 app.all('/api/airtable/*', (req, res) => {
   const atPath = req.path.replace('/api/airtable', '');
   const query = req.url.includes('?') ? req.url.substring(req.url.indexOf('?')) : '';
   const url = `https://api.airtable.com/v0${atPath}${query}`;
-  
+
   const options = {
     method: req.method,
     headers: {
@@ -31,15 +33,16 @@ app.all('/api/airtable/*', (req, res) => {
   });
 
   proxyReq.on('error', (e) => res.status(500).json({ error: e.message }));
-  
+
   if (req.body && Object.keys(req.body).length > 0) {
     proxyReq.write(JSON.stringify(req.body));
   }
   proxyReq.end();
 });
 
+// Serve index.html for all other routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
