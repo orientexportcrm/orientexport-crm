@@ -190,6 +190,10 @@ tr:hover .td-actions { opacity:1; }
           <option value="">Tutti i paesi</option>
           <option>Russia</option><option>Bielorussia</option><option>Kazakhstan</option><option>Uzbekistan</option>
         </select>
+        <select class="filter-select" onchange="renderTable('cis')" id="filter-priority-cis">
+          <option value="">Tutte le priorità</option>
+          <option>1-Bassa</option><option>2-Media</option><option>3-Alta</option>
+        </select>
       </div>
       <button class="btn-add" onclick="openModal('cis')">+ Aggiungi Buyer</button>
     </div>
@@ -205,6 +209,9 @@ tr:hover .td-actions { opacity:1; }
           <option value="">Tutti gli stati</option>
           <option>Prospect</option><option>Contattato</option><option>Proposta inviata</option>
           <option>Trattativa</option><option>Mandato firmato</option><option>Attivo</option><option>Freddo</option><option>Concluso</option>
+        <select class="filter-select" onchange="renderTable('it')" id="filter-priority-it">
+          <option value="">Tutte le priorità</option>
+          <option>1-Bassa</option><option>2-Media</option><option>3-Alta</option>
         </select>
       </div>
       <button class="btn-add" onclick="openModal('it')">+ Aggiungi Cliente</button>
@@ -290,6 +297,8 @@ var data = { cis: [], it: [] };
 var editId = { cis: null, it: null };
 var currentUser = null;
 var currentSection = 'cis';
+var sortField = { cis: null, it: null };
+var sortDir = { cis: 1, it: 1 };
 
 function doLogin() {
   var u = document.getElementById('loginUser').value.trim().toLowerCase();
@@ -440,14 +449,26 @@ function getFiltered(type) {
   var search = (document.getElementById('search-'+type)||{value:''}).value.toLowerCase();
   var status = (document.getElementById('filter-status-'+type)||{value:''}).value;
   var country = type==='cis' ? (document.getElementById('filter-country-cis')||{value:''}).value : '';
-  return data[type].filter(function(l) {
+  var filtered = data[type].filter(function(l) {
     var nf = type==='cis' ? 'Name' : 'Nome';
     var txt = ((l[nf]||'')+(l.Azienda||'')+(l.Paese||'')+(l.Settore||'')).toLowerCase();
     if (search && txt.indexOf(search)===-1) return false;
     if (status && l.Stato!==status) return false;
     if (country && l.Paese!==country) return false;
+    var priority = type==='cis' ? (document.getElementById('filter-priority-cis')||{value:''}).value : (document.getElementById('filter-priority-it')||{value:''}).value;
+    if (priority && l['Priorità']!==priority) return false;
     return true;
   });
+  if (sortField[type]) {
+    var sf = sortField[type];
+    var dir = sortDir[type];
+    filtered.sort(function(a,b) {
+      var av = (a[sf]||'').toString().toLowerCase();
+      var bv = (b[sf]||'').toString().toLowerCase();
+      return av < bv ? -dir : av > bv ? dir : 0;
+    });
+  }
+  return filtered;
 }
 
 function renderStats(type) {
@@ -462,6 +483,16 @@ function renderStats(type) {
   document.getElementById('stats-'+type).innerHTML = labels.map(function(x){
     return '<div class="stat-card"><div class="stat-label">'+x[0]+'</div><div class="stat-value">'+x[1]+'</div>'+(x[2]?'<div class="stat-sub">'+x[2]+'</div>':'')+'</div>';
   }).join('');
+}
+
+function sortTable(type, field) {
+  if (sortField[type] === field) {
+    sortDir[type] *= -1;
+  } else {
+    sortField[type] = field;
+    sortDir[type] = 1;
+  }
+  renderTable(type);
 }
 
 function renderTable(type) {
@@ -504,11 +535,31 @@ function renderTable(type) {
     }
   }).join('');
   var hd = type==='cis'
-    ? '<thead><tr><th>NOME / AZIENDA</th><th>PAESE</th><th>SETTORE</th><th>PRODOTTO</th><th>STATO</th><th>PRIORITÀ</th><th>ULTIMO CONTATTO</th><th></th></tr></thead>'
-    : '<thead><tr><th>NOME / AZIENDA</th><th>SETTORE</th><th>MERCATI TARGET</th><th>STATO</th><th>PRIORITÀ</th><th>ULTIMO CONTATTO</th><th></th></tr></thead>';
+    ? '<thead><tr>' +
+    '<th style="cursor:pointer" onclick="sortTable('cis','Name')">NOME / AZIENDA'+sortArrow('cis','Name')+'</th>' +
+    '<th style="cursor:pointer" onclick="sortTable('cis','Paese')">PAESE'+sortArrow('cis','Paese')+'</th>' +
+    '<th style="cursor:pointer" onclick="sortTable('cis','Settore')">SETTORE'+sortArrow('cis','Settore')+'</th>' +
+    '<th style="cursor:pointer" onclick="sortTable('cis','Prodotto')">PRODOTTO'+sortArrow('cis','Prodotto')+'</th>' +
+    '<th style="cursor:pointer" onclick="sortTable('cis','Stato')">STATO'+sortArrow('cis','Stato')+'</th>' +
+    '<th style="cursor:pointer" onclick="sortTable('cis','Priorità')">PRIORITÀ'+sortArrow('cis','Priorità')+'</th>' +
+    '<th style="cursor:pointer" onclick="sortTable('cis','Ultimo contatto')">ULTIMO CONTATTO'+sortArrow('cis','Ultimo contatto')+'</th>' +
+    '<th></th></tr></thead>'
+    : '<thead><tr>' +
+    '<th style="cursor:pointer" onclick="sortTable('it','Nome')">NOME / AZIENDA'+sortArrow('it','Nome')+'</th>' +
+    '<th style="cursor:pointer" onclick="sortTable('it','Settore')">SETTORE'+sortArrow('it','Settore')+'</th>' +
+    '<th style="cursor:pointer" onclick="sortTable('it','Mercati Target')">MERCATI TARGET'+sortArrow('it','Mercati Target')+'</th>' +
+    '<th style="cursor:pointer" onclick="sortTable('it','Stato')">STATO'+sortArrow('it','Stato')+'</th>' +
+    '<th style="cursor:pointer" onclick="sortTable('it','Priorità')">PRIORITÀ'+sortArrow('it','Priorità')+'</th>' +
+    '<th style="cursor:pointer" onclick="sortTable('it','Ultimo contatto')">ULTIMO CONTATTO'+sortArrow('it','Ultimo contatto')+'</th>' +
+    '<th></th></tr></thead>';
   wrap.innerHTML = '<div class="table-wrap"><table>'+hd+'<tbody>'+rows+'</tbody></table></div>';
 }
 
+
+function sortArrow(type, field) {
+  if (sortField[type] !== field) return ' <span style="color:#ccc;font-size:10px;">↕</span>';
+  return sortDir[type] === 1 ? ' <span style="color:#0D0D6B;font-size:10px;">↑</span>' : ' <span style="color:#0D0D6B;font-size:10px;">↓</span>';
+}
 function renderAll() { renderTable('cis'); renderTable('it'); }
 
 function openModal(type, id) {
