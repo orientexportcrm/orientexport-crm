@@ -536,21 +536,21 @@ function renderTable(type) {
   }).join('');
   var hd = type==='cis'
     ? ('<thead><tr>' +
-      '<th style="cursor:pointer" onclick="sortTable('cis','Name')">NOME'+sortArrow('cis','Name')+'</th>' +
-      '<th style="cursor:pointer" onclick="sortTable('cis','Paese')">PAESE'+sortArrow('cis','Paese')+'</th>' +
-      '<th style="cursor:pointer" onclick="sortTable('cis','Settore')">SETTORE'+sortArrow('cis','Settore')+'</th>' +
-      '<th style="cursor:pointer" onclick="sortTable('cis','Prodotto')">PRODOTTO'+sortArrow('cis','Prodotto')+'</th>' +
-      '<th style="cursor:pointer" onclick="sortTable('cis','Stato')">STATO'+sortArrow('cis','Stato')+'</th>' +
-      '<th style="cursor:pointer" onclick="sortTable('cis','Priorità')">PRIORITÀ'+sortArrow('cis','Priorità')+'</th>' +
-      '<th style="cursor:pointer" onclick="sortTable('cis','Ultimo contatto')">ULT.CONTATTO'+sortArrow('cis','Ultimo contatto')+'</th>' +
+      '<th class="sortable" data-type="cis" data-field="Name" style="cursor:pointer">NOME'+sortArrow('cis','Name')+'</th>' +
+      '<th class="sortable" data-type="cis" data-field="Paese" style="cursor:pointer">PAESE'+sortArrow('cis','Paese')+'</th>' +
+      '<th class="sortable" data-type="cis" data-field="Settore" style="cursor:pointer">SETTORE'+sortArrow('cis','Settore')+'</th>' +
+      '<th class="sortable" data-type="cis" data-field="Prodotto" style="cursor:pointer">PRODOTTO'+sortArrow('cis','Prodotto')+'</th>' +
+      '<th class="sortable" data-type="cis" data-field="Stato" style="cursor:pointer">STATO'+sortArrow('cis','Stato')+'</th>' +
+      '<th class="sortable" data-type="cis" data-field="Priorità" style="cursor:pointer">PRIORITÀ'+sortArrow('cis','Priorità')+'</th>' +
+      '<th class="sortable" data-type="cis" data-field="Ultimo contatto" style="cursor:pointer">ULT.CONTATTO'+sortArrow('cis','Ultimo contatto')+'</th>' +
       '<th></th></tr></thead>')
     : ('<thead><tr>' +
-      '<th style="cursor:pointer" onclick="sortTable('it','Nome')">NOME'+sortArrow('it','Nome')+'</th>' +
-      '<th style="cursor:pointer" onclick="sortTable('it','Settore')">SETTORE'+sortArrow('it','Settore')+'</th>' +
-      '<th style="cursor:pointer" onclick="sortTable('it','Mercati Target')">MERCATI TARGET'+sortArrow('it','Mercati Target')+'</th>' +
-      '<th style="cursor:pointer" onclick="sortTable('it','Stato')">STATO'+sortArrow('it','Stato')+'</th>' +
-      '<th style="cursor:pointer" onclick="sortTable('it','Priorità')">PRIORITÀ'+sortArrow('it','Priorità')+'</th>' +
-      '<th style="cursor:pointer" onclick="sortTable('it','Ultimo contatto')">ULT.CONTATTO'+sortArrow('it','Ultimo contatto')+'</th>' +
+      '<th class="sortable" data-type="it" data-field="Nome" style="cursor:pointer">NOME'+sortArrow('it','Nome')+'</th>' +
+      '<th class="sortable" data-type="it" data-field="Settore" style="cursor:pointer">SETTORE'+sortArrow('it','Settore')+'</th>' +
+      '<th class="sortable" data-type="it" data-field="Mercati Target" style="cursor:pointer">MERCATI TARGET'+sortArrow('it','Mercati Target')+'</th>' +
+      '<th class="sortable" data-type="it" data-field="Stato" style="cursor:pointer">STATO'+sortArrow('it','Stato')+'</th>' +
+      '<th class="sortable" data-type="it" data-field="Priorità" style="cursor:pointer">PRIORITÀ'+sortArrow('it','Priorità')+'</th>' +
+      '<th class="sortable" data-type="it" data-field="Ultimo contatto" style="cursor:pointer">ULT.CONTATTO'+sortArrow('it','Ultimo contatto')+'</th>' +
       '<th></th></tr></thead>');
   wrap.innerHTML = '<div class="table-wrap"><table>'+hd+'<tbody>'+rows+'</tbody></table></div>';
 }
@@ -630,6 +630,16 @@ document.querySelectorAll('.modal-overlay').forEach(function(m){
 });
 
 checkSession();
+
+// Event delegation for sortable headers
+document.addEventListener('click', function(e) {
+  var th = e.target.closest('th.sortable');
+  if (th) {
+    var type = th.getAttribute('data-type');
+    var field = th.getAttribute('data-field');
+    if (type && field) sortTable(type, field);
+  }
+});
 </script>
 </body>
 </html>
