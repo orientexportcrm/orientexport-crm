@@ -191,7 +191,7 @@ tr:hover .td-actions { opacity:1; }
           <option>Russia</option><option>Bielorussia</option><option>Kazakhstan</option><option>Uzbekistan</option>
         </select>
         <select class="filter-select" onchange="renderTable('cis')" id="filter-priority-cis">
-          <option value="">Tutte le priorità</option>
+          <option value="">Tutte le priorita</option>
           <option>1-Bassa</option><option>2-Media</option><option>3-Alta</option>
         </select>
       </div>
@@ -211,7 +211,7 @@ tr:hover .td-actions { opacity:1; }
           <option>Trattativa</option><option>Mandato firmato</option><option>Attivo</option><option>Freddo</option><option>Concluso</option>
         </select>
         <select class="filter-select" onchange="renderTable('it')" id="filter-priority-it">
-          <option value="">Tutte le priorità</option>
+          <option value="">Tutte le priorita</option>
           <option>1-Bassa</option><option>2-Media</option><option>3-Alta</option>
         </select>
       </div>
@@ -492,8 +492,8 @@ function sortTable(type, field) {
   renderTable(type);
 }
 function sortArrow(type, field) {
-  if (sortField[type] !== field) return ' <span style="color:#ccc;font-size:10px;">↕</span>';
-  return sortDir[type] === 1 ? ' <span style="color:#0D0D6B;font-size:10px;">↑</span>' : ' <span style="color:#0D0D6B;font-size:10px;">↓</span>';
+  if (sortField[type] !== field) return ' <span style="color:#ccc;font-size:10px;">&#8597;</span>';
+  return sortDir[type] === 1 ? ' <span style="color:#0D0D6B;font-size:10px;">&#8593;</span>' : ' <span style="color:#0D0D6B;font-size:10px;">&#8595;</span>';
 }
 function renderTable(type) {
   renderStats(type);
@@ -534,27 +534,35 @@ function renderTable(type) {
         '</div></td></tr>';
     }
   }).join('');
-  var hd = type==='cis'
-    ? ('<thead><tr>' +
-      '<th class="sortable" data-type="cis" data-field="Name" style="cursor:pointer">NOME'+sortArrow('cis','Name')+'</th>' +
-      '<th class="sortable" data-type="cis" data-field="Paese" style="cursor:pointer">PAESE'+sortArrow('cis','Paese')+'</th>' +
-      '<th class="sortable" data-type="cis" data-field="Settore" style="cursor:pointer">SETTORE'+sortArrow('cis','Settore')+'</th>' +
-      '<th class="sortable" data-type="cis" data-field="Prodotto" style="cursor:pointer">PRODOTTO'+sortArrow('cis','Prodotto')+'</th>' +
-      '<th class="sortable" data-type="cis" data-field="Stato" style="cursor:pointer">STATO'+sortArrow('cis','Stato')+'</th>' +
-      '<th class="sortable" data-type="cis" data-field="Priorità" style="cursor:pointer">PRIORITÀ'+sortArrow('cis','Priorità')+'</th>' +
-      '<th class="sortable" data-type="cis" data-field="Ultimo contatto" style="cursor:pointer">ULT.CONTATTO'+sortArrow('cis','Ultimo contatto')+'</th>' +
-      '<th></th></tr></thead>')
-    : ('<thead><tr>' +
-      '<th class="sortable" data-type="it" data-field="Nome" style="cursor:pointer">NOME'+sortArrow('it','Nome')+'</th>' +
-      '<th class="sortable" data-type="it" data-field="Settore" style="cursor:pointer">SETTORE'+sortArrow('it','Settore')+'</th>' +
-      '<th class="sortable" data-type="it" data-field="Mercati Target" style="cursor:pointer">MERCATI TARGET'+sortArrow('it','Mercati Target')+'</th>' +
-      '<th class="sortable" data-type="it" data-field="Stato" style="cursor:pointer">STATO'+sortArrow('it','Stato')+'</th>' +
-      '<th class="sortable" data-type="it" data-field="Priorità" style="cursor:pointer">PRIORITÀ'+sortArrow('it','Priorità')+'</th>' +
-      '<th class="sortable" data-type="it" data-field="Ultimo contatto" style="cursor:pointer">ULT.CONTATTO'+sortArrow('it','Ultimo contatto')+'</th>' +
-      '<th></th></tr></thead>');
+  var hd = buildHeaders(type);
   wrap.innerHTML = '<div class="table-wrap"><table>'+hd+'<tbody>'+rows+'</tbody></table></div>';
 }
 
+function th(type, field, label) {
+  return '<th style="cursor:pointer;user-select:none;" onclick="sortTable(\'' + type + '\',\'' + field + '\')">' + label + sortArrow(type, field) + '</th>';
+}
+function buildHeaders(type) {
+  if (type === 'cis') {
+    return '<thead><tr>' +
+      th('cis','Name','NOME') +
+      th('cis','Paese','PAESE') +
+      th('cis','Settore','SETTORE') +
+      th('cis','Prodotto','PRODOTTO') +
+      th('cis','Stato','STATO') +
+      th('cis','Priorità','PRIORITÀ') +
+      th('cis','Ultimo contatto','ULT.CONTATTO') +
+      '<th></th></tr></thead>';
+  } else {
+    return '<thead><tr>' +
+      th('it','Nome','NOME') +
+      th('it','Settore','SETTORE') +
+      th('it','Mercati Target','MERCATI TARGET') +
+      th('it','Stato','STATO') +
+      th('it','Priorità','PRIORITÀ') +
+      th('it','Ultimo contatto','ULT.CONTATTO') +
+      '<th></th></tr></thead>';
+  }
+}
 function renderAll() { renderTable('cis'); renderTable('it'); }
 
 function openModal(type, id) {
@@ -630,16 +638,6 @@ document.querySelectorAll('.modal-overlay').forEach(function(m){
 });
 
 checkSession();
-
-// Event delegation for sortable headers
-document.addEventListener('click', function(e) {
-  var th = e.target.closest('th.sortable');
-  if (th) {
-    var type = th.getAttribute('data-type');
-    var field = th.getAttribute('data-field');
-    if (type && field) sortTable(type, field);
-  }
-});
 </script>
 </body>
 </html>
