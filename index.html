@@ -202,6 +202,14 @@ tr:hover .td-actions { opacity:1; }
           <option>Food & Beverage</option>
           <option>Altro</option>
         </select>
+        <select class="filter-select" onchange="renderTable('cis')" id="filter-prodotto-cis">
+          <option value="">Tutti i prodotti</option>
+          <option>Vino & Spirits</option>
+          <option>Agroalimentare</option>
+          <option>Abbigliamento</option>
+          <option>Food & Beverage</option>
+          <option>Altro</option>
+        </select>
       </div>
       <button class="btn-add" onclick="openModal('cis')">+ Aggiungi Buyer</button>
     </div>
@@ -478,6 +486,8 @@ function getFiltered(type) {
     if (priority && l['Priorità']!==priority) return false;
     var settore = type==='cis' ? (document.getElementById('filter-settore-cis')||{value:''}).value : (document.getElementById('filter-settore-it')||{value:''}).value;
     if (settore && (l.Settore||'').indexOf(settore)===-1) return false;
+    var prodotto = type==='cis' ? (document.getElementById('filter-prodotto-cis')||{value:''}).value : '';
+    if (prodotto && (l.Prodotto||'').indexOf(prodotto)===-1) return false;
     return true;
   });
   if (sortField[type]) {
